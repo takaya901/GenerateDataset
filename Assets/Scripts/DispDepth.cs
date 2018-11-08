@@ -15,7 +15,7 @@ public class DispDepth : MonoBehaviour
     void Start()
     {
         GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;  //カメラがデプステクスチャを生成するモード
-        
+
         StartCoroutine(CaptureScreenshot());
         //StartCoroutine(CaptureDepth());
     }
@@ -33,7 +33,7 @@ public class DispDepth : MonoBehaviour
             var bytes = texture.EncodeToPNG();
             File.WriteAllBytes(SCREENSHOT_PATH + i + EXTENSION, bytes);
 
-            _setScene.Set();
+            _setScene.Set(i);
             //if (i == 9) {
             //    Graphics.Blit(texture, null, _depthMat);    //ポストエフェクトでデプス画像に変換する
             //    yield return StartCoroutine(CaptureDepth());

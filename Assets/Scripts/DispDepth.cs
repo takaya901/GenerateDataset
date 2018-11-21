@@ -8,14 +8,15 @@ public class DispDepth : MonoBehaviour
     [SerializeField] Material _depthMat;    //デプス表示用マテリアル
     [SerializeField] SetScene _setScene;
 
-    const string SCREENSHOT_PATH = "C:/Unity/Dataset/ScreenShots/"; //スクリーンショットの保存先
-    const string DEPTH_IMG_PATH = "C:/Unity/Dataset/DepthImg/";  //デプス画像の保存先
-    const string EXTENSION = ".png";
+    static readonly string WITHOUT_TARGET_PATH = "C:/Unity/Dataset/rgbWithoutTarget/"; //スクリーンショットの保存先
+    static readonly string WITH_TARGET_PATH = "C:/Unity/Dataset/rgbWithTarget/"; //スクリーンショットの保存先
+    static readonly string DEPTH_IMG_PATH = "C:/Unity/Dataset/DepthImg/";  //デプス画像の保存先
+    static readonly string EXTENSION = ".png";
 
     void Start()
     {
         GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;  //カメラがデプステクスチャを生成するモード
-
+        
         StartCoroutine(CaptureScreenshot());
         //StartCoroutine(CaptureDepth());
     }
@@ -25,22 +26,36 @@ public class DispDepth : MonoBehaviour
     IEnumerator CaptureScreenshot()
     {
         for (int i = 0; i < 10; i++) {
+            _setScene.Set(i);
             var texture = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
             yield return new WaitForEndOfFrame();
 
             texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
             texture.Apply();
             var bytes = texture.EncodeToPNG();
-            File.WriteAllBytes(SCREENSHOT_PATH + i + EXTENSION, bytes);
+            File.WriteAllBytes(WITHOUT_TARGET_PATH + i + EXTENSION, bytes);
 
-            _setScene.Set(i);
+            //if (i == 9) {
+            //    Graphics.Blit(texture, null, _depthMat);    //ポストエフェクトでデプス画像に変換する
+            //    yield return StartCoroutine(CaptureDepth());
+            //}
+            //Destroy(texture);
+            _setScene.SetTarget();
+            yield return new WaitForEndOfFrame();
+
+            texture = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
+            texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            texture.Apply();
+            bytes = texture.EncodeToPNG();
+            File.WriteAllBytes(WITH_TARGET_PATH + i + EXTENSION, bytes);
+
             //if (i == 9) {
             //    Graphics.Blit(texture, null, _depthMat);    //ポストエフェクトでデプス画像に変換する
             //    yield return StartCoroutine(CaptureDepth());
             //}
             Destroy(texture);
         }
-        EditorApplication.isPlaying = false;    //エディタ再生終了
+        EditorApplication.isPlaying = false;    //データ取り終えたらエディタ再生終了
     }
 
     //デプス画像を保存

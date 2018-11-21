@@ -8,7 +8,6 @@ public class SetScene : MonoBehaviour
     [SerializeField] GameObject[] _probes;  //probeにするオブジェクトのリスト
     [SerializeField] GameObject _target;
     [SerializeField] Light _light;
-    [SerializeField] GameObject _plane; //床
 
     GameObject _probe, _instantiatedTarget;
     Vector3 _camTargetPos;  //カメラの向き
@@ -29,12 +28,11 @@ public class SetScene : MonoBehaviour
             Destroy(_instantiatedTarget);
         }
 
-        SetCameraPos();
-        SetLight();
-        var planeValue = SetPlane();
+        //SetCameraPos();
+        //SetLight();
         var probeIdx = SetProbe();
 
-        Debug.Log($"{idx} Light Intensity: {_light.intensity} Plane Value: {planeValue} Probe Index: {probeIdx}");
+        Debug.Log($"{idx} ProbePos: {_probe.transform.position}");
     }
     
     //カメラ位置を設定
@@ -66,46 +64,46 @@ public class SetScene : MonoBehaviour
                                  radius * Cos(phi * Deg2Rad) * Cos(theta * Deg2Rad))
                              + _camTargetPos;
     }
-
-    //床の明るさ(HSVのVのみ)をランダムに設定　http://nn-hokuson.hatenablog.com/entry/2017/04/12/194631
-    float SetPlane()
-    {
-        var value = Random.Range(30f, 100f);
-        _plane.GetComponent<Renderer>().material.color = Color.HSVToRGB(0f, 0f, value / 100f);
-        return value;
-    }
-
-    //ランダムにprobeを生成
+    
     float SetProbe()
     {
         var idx = Random.Range(0, _probes.Length);  //probe識別子
-        _probe = SetPrefab(_probes[idx]);
+        var pos = GetRandPos();
+        _probe = SetPrefab(_probes[idx], pos);
 
         return idx;
     }
-
+    
     public void SetTarget()
     {
-        _instantiatedTarget = SetPrefab(_target);
+        var pos = GetRandPos();
+        var probePos = _probe.transform.position;
+
+        //Probeと異なる位置に生成
+        while (pos.x == probePos.x && pos.z == probePos.z) {
+            pos = GetRandPos();
+        }
+        _instantiatedTarget = SetPrefab(_target, pos);
     }
 
-    GameObject SetPrefab(GameObject prefab)
+    GameObject SetPrefab(GameObject prefab, Vector3 pos)
     {
-        var pos = new Vector3 {
-            x = Random.Range(-3f, 3f),
-            y = 0f,
-            z = Random.Range(-3f, 3f)
-        };
-        var rot = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
-        var scale = Random.Range(0.5f, 2f);
-
-        var instantiatedObj = Instantiate(prefab, pos, rot);
-        instantiatedObj.transform.localScale = new Vector3(scale, scale, scale);
+        var instantiatedObj = Instantiate(prefab, pos, Quaternion.identity);
 
         //Probeの下端が地面に接するように移動
         var posY = instantiatedObj.GetComponent<Collider>().bounds.size.y / 2f;
         instantiatedObj.transform.Translate(0f, posY, 0f);
 
         return instantiatedObj;
+    }
+
+    //Prefabの生成位置を9点からランダムに選ぶ
+    Vector3 GetRandPos()
+    {
+        return new Vector3 {
+            x = Random.Range(-1, 2) * 3,
+            y = 0f,
+            z = Random.Range(-1, 2) * 3
+        };
     }
 }

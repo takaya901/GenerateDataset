@@ -8,6 +8,7 @@ public class DispDepth : MonoBehaviour
     [SerializeField] Material _depthMat;    //デプス表示用マテリアル
     [SerializeField] SetScene _setScene;
     [SerializeField] GameObject _sphere;
+    [SerializeField] LineRenderer _line;
 
     static readonly string WITHOUT_TARGET_PATH = "C:/Unity/Dataset/rgbWithoutTarget/"; //スクリーンショットの保存先
     static readonly string WITH_TARGET_PATH = "C:/Unity/Dataset/rgbWithTarget/"; //スクリーンショットの保存先
@@ -18,9 +19,9 @@ public class DispDepth : MonoBehaviour
     {
         GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;  //カメラがデプステクスチャを生成するモード
         
-        //StartCoroutine(CaptureScreenshot());
-        MakeGeoDome();
-        //StartCoroutine(CaptureDepth());
+//        StartCoroutine(CaptureScreenshot());
+//        MakeGeoDome();
+//        StartCoroutine(CaptureDepth());
     }
 
     //スクリーンショットを保存
@@ -73,15 +74,15 @@ public class DispDepth : MonoBehaviour
         File.WriteAllBytes(DEPTH_IMG_PATH + "1" + EXTENSION, bytes);
     }
 
-    void MakeGeoDome()
-    {
-        var gdv = new GeodesicDomeVertices();
-
-        foreach (var vtx in gdv.Vertices) {
-            Instantiate(_sphere, vtx, Quaternion.identity).transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-        }
-
-        Instantiate(_sphere, new Vector3(0, 0, 0), Quaternion.identity).transform.localScale = new Vector3(gdv.Diameter, gdv.Diameter, gdv.Diameter);
-        Debug.Log(gdv.Vertices.Count);
-    }
+//    void MakeGeoDome()
+//    {
+//        var gdv = new GeodesicDomeVertices();
+//
+//        foreach (var vtx in gdv.Vertices) {
+//            Instantiate(_sphere, vtx, Quaternion.identity).transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+//        }
+//
+//        Instantiate(_sphere, new Vector3(0, 0, 0), Quaternion.identity).transform.localScale = new Vector3(gdv.Diameter, gdv.Diameter, gdv.Diameter);
+//        Debug.Log(gdv.Vertices.Count);
+//    }
 }

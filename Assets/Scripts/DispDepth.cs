@@ -5,31 +5,41 @@ using UnityEngine;
 
 public class DispDepth : MonoBehaviour
 {
-    [SerializeField] Material _depthMat;    //デプス表示用マテリアル
+    [SerializeField] Material _depthMat;      //デプス表示用マテリアル
     [SerializeField] SetScene _setScene;
-    [SerializeField] GameObject _sphere;
-    [SerializeField] LineRenderer _line;
     
-    static readonly string WITHOUT_TARGET_PATH = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/WithoutTarget/"; //ターゲットありスクリーンショットの保存先
-    static readonly string WITH_TARGET_PATH    = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/WithTarget/";    //ターゲットなしスクリーンショットの保存先
-    static readonly string DEPTH_IMG_PATH      = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/DepthImg/";      //デプス画像の保存先
-    static readonly string EXTENSION = ".png";
-    static readonly int SS_SIZE = 400;    //スクリーンショットの縦横サイズ
+    const string DATASET_PATH = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/";
+    const string WITHOUT_TARGET = "WithoutTarget/";
+    const string WITH_TARGET = "WithTarget/";
+    static readonly int TRAIN_IMG_NUM = 3000; //画像生成枚数
+    static readonly int TEST_IMG_NUM = 2000;     //画像生成枚数
+    static readonly int FIRST_INDEX = 0;      //既存のデータセットに追加する場合はこれを変更
+    
+//    static readonly string TRAIN_WITHOUT_TARGET_PATH = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TrainWithoutTarget/"; //訓練用ターゲットなし画像の保存先
+//    static readonly string TRAIN_WITH_TARGET_PATH    = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TrainWithTarget/";    //訓練用ターゲットあり画像の保存先
+//    static readonly string TEST_WITHOUT_TARGET_PATH  = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TestWithoutTarget/";  //テスト用ターゲットなし画像の保存先
+//    static readonly string TEST_WITH_TARGET_PATH     = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TestWithTarget/";     //テスト用ターゲットあり画像の保存先
+    static readonly string DEPTH_IMG_PATH            = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/DepthImg/";           //デプス画像の保存先
+    const string EXTENSION = ".png";
+    const int SS_SIZE = 400; //生成画像の縦横サイズ
 
     void Start()
     {
         GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;  //カメラがデプステクスチャを生成するモード
-        StartCoroutine(CaptureScreenshot());
+        StartCoroutine(CaptureScreenshot(isTrain:false));
 //        StartCoroutine(CaptureDepth());
     }
 
     //スクリーンショットを保存
     //ReadPixelsはWaitForEndOfFrameのあとで実行しなければいけないのでコルーチンで実行 https://qiita.com/su10/items/a8f3f825155835de3d2a
-    IEnumerator CaptureScreenshot()
+    IEnumerator CaptureScreenshot(bool isTrain)
     {
+        var imgNum = isTrain ? TRAIN_IMG_NUM : TEST_IMG_NUM;
+        var dirPrefix = isTrain ? "Train" : "Test";
+        
         var ssBeginPos = (Screen.width - SS_SIZE) / 2;    //スクリーンショットの左端
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = FIRST_INDEX; i < imgNum; i++) {
             _setScene.Set(i);
             var texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.ARGB32, false);
             yield return new WaitForEndOfFrame();
@@ -37,7 +47,7 @@ public class DispDepth : MonoBehaviour
             texture.ReadPixels(new Rect(ssBeginPos, 0, SS_SIZE, SS_SIZE), 0, 0);
             texture.Apply();
             var bytes = texture.EncodeToPNG();
-            File.WriteAllBytes(WITHOUT_TARGET_PATH + i + EXTENSION, bytes);
+            File.WriteAllBytes(DATASET_PATH + dirPrefix + WITHOUT_TARGET + i + EXTENSION, bytes);
 
             //if (i == 9) {
             //    Graphics.Blit(texture, null, _depthMat);    //ポストエフェクトでデプス画像に変換する
@@ -51,7 +61,7 @@ public class DispDepth : MonoBehaviour
             texture.ReadPixels(new Rect(ssBeginPos, 0, SS_SIZE, SS_SIZE), 0, 0);
             texture.Apply();
             bytes = texture.EncodeToPNG();
-            File.WriteAllBytes(WITH_TARGET_PATH + i + EXTENSION, bytes);
+            File.WriteAllBytes(DATASET_PATH + dirPrefix + WITH_TARGET + i + EXTENSION, bytes);
 
             //if (i == 9) {
             //    Graphics.Blit(texture, null, _depthMat);    //ポストエフェクトでデプス画像に変換する
@@ -74,16 +84,4 @@ public class DispDepth : MonoBehaviour
         Destroy(texture);
         File.WriteAllBytes(DEPTH_IMG_PATH + "1" + EXTENSION, bytes);
     }
-
-//    void MakeGeoDome()
-//    {
-//        var gdv = new GeodesicDomeVertices();
-//
-//        foreach (var vtx in gdv.Vertices) {
-//            Instantiate(_sphere, vtx, Quaternion.identity).transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-//        }
-//
-//        Instantiate(_sphere, new Vector3(0, 0, 0), Quaternion.identity).transform.localScale = new Vector3(gdv.Diameter, gdv.Diameter, gdv.Diameter);
-//        Debug.Log(gdv.Vertices.Count);
-//    }
 }

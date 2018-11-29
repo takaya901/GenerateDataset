@@ -318,8 +318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _depthMat: {fileID: 2100000, guid: f618e9c3caf67f844bf62902d0c3a8ae, type: 2}
   _setScene: {fileID: 534669908}
-  _sphere: {fileID: 1051928789290584, guid: e293d148fb5edaf409b11ab541347f02, type: 2}
-  _line: {fileID: 0}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +390,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4246794467509946, guid: e9f30adfef572274faa1601a47f88bb8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 4246794467509946, guid: e9f30adfef572274faa1601a47f88bb8, type: 2}
       propertyPath: m_LocalPosition.z

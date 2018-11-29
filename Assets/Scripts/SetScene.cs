@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using static UnityEngine.Mathf;
 
 /// <summary>シーンの各パラメータを設定する</summary>
@@ -13,9 +14,13 @@ public class SetScene : MonoBehaviour
     Vector3 _camTargetPos;  //カメラの向き
     static readonly float CAM_RADIUS = 5f;    //中心からカメラまでの距離
     static readonly float LIGHT_RADIUS = 25f;    //中心から光源までの距離
+    CalcGeodesicDome _cgd;
+    List<Vector3> _geoDomeVertices;
 
-    void Start()
+    void Awake()
     {
+        _cgd = new CalcGeodesicDome();
+        _geoDomeVertices = _cgd.GetVertices();
         _camTargetPos = _targetTransform.position;
     }
 
@@ -28,41 +33,27 @@ public class SetScene : MonoBehaviour
             Destroy(_instantiatedTarget);
         }
 
-        //SetCameraPos();
-        //SetLight();
+        SetCameraPos();
+//        SetLight();
         var probeIdx = SetProbe();
 
-        Debug.Log($"{idx} ProbePos: {_probe.transform.position}");
+        Debug.Log($"{idx} CameraPos: {transform.position} LightPos: {_light.transform.position}");
     }
     
-    //カメラ位置を設定
+    /// <summary>ジオデシックドームの頂点上にカメラを配置</summary>
     void SetCameraPos()
     {
-        var theta = Random.Range(0f, 360f); //方位角
-        var phi = Random.Range(0f, 90f);    //仰角
-        SetOnSphere(transform, CAM_RADIUS, theta, phi);
-
-        transform.eulerAngles = new Vector3(phi, theta - 180f, 0);  //中心を向く
+        var idx = Random.Range(0, _geoDomeVertices.Count);
+        transform.position = _geoDomeVertices[idx] * 4.5f;
+        transform.LookAt(new Vector3(0f, 0f, 0f));
     }
 
     //光源の位置と強さを設定
     void SetLight()
     {
-        var theta = Random.Range(0f, 360f); //方位角
-        var phi = Random.Range(60f, 90f);    //仰角
-        SetOnSphere(_light.transform, LIGHT_RADIUS, theta, phi);
-
-        _light.intensity = Random.Range(3f, 7f);
-    }
-
-    //オブジェクトを球面上に配置 http://osinko.hatenablog.jp/entry/2017/04/05/184123
-    void SetOnSphere(Transform transform, float radius, float theta, float phi)
-    {
-        transform.position = new Vector3(
-                                 radius * Cos(phi * Deg2Rad) * Sin(theta * Deg2Rad),
-                                 radius * Sin(phi * Deg2Rad),
-                                 radius * Cos(phi * Deg2Rad) * Cos(theta * Deg2Rad))
-                             + _camTargetPos;
+        var idx = Random.Range(0, _geoDomeVertices.Count);
+        _light.transform.position = _geoDomeVertices[idx] * 20f;
+        _light.transform.LookAt(Vector3.down);
     }
     
     float SetProbe()
@@ -101,9 +92,9 @@ public class SetScene : MonoBehaviour
     Vector3 GetRandPos()
     {
         return new Vector3 {
-            x = Random.Range(-1, 2) * 3,
+            x = Random.Range(-1, 2) * 2,
             y = 0f,
-            z = Random.Range(-1, 2) * 3
+            z = Random.Range(-1, 2) * 2
         };
     }
 }

@@ -9,18 +9,17 @@ public class DispDepth : MonoBehaviour
     [SerializeField] SetScene _setScene;
     [SerializeField] GameObject _sphere;
     [SerializeField] LineRenderer _line;
-
-    static readonly string WITHOUT_TARGET_PATH = "C:/Unity/Dataset/rgbWithoutTarget/"; //スクリーンショットの保存先
-    static readonly string WITH_TARGET_PATH = "C:/Unity/Dataset/rgbWithTarget/"; //スクリーンショットの保存先
-    static readonly string DEPTH_IMG_PATH = "C:/Unity/Dataset/DepthImg/";  //デプス画像の保存先
+    
+    static readonly string WITHOUT_TARGET_PATH = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/WithoutTarget/"; //ターゲットありスクリーンショットの保存先
+    static readonly string WITH_TARGET_PATH    = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/WithTarget/";    //ターゲットなしスクリーンショットの保存先
+    static readonly string DEPTH_IMG_PATH      = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/DepthImg/";      //デプス画像の保存先
     static readonly string EXTENSION = ".png";
+    static readonly int SS_SIZE = 400;    //スクリーンショットの縦横サイズ
 
     void Start()
     {
         GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;  //カメラがデプステクスチャを生成するモード
-        
-//        StartCoroutine(CaptureScreenshot());
-//        MakeGeoDome();
+        StartCoroutine(CaptureScreenshot());
 //        StartCoroutine(CaptureDepth());
     }
 
@@ -28,12 +27,14 @@ public class DispDepth : MonoBehaviour
     //ReadPixelsはWaitForEndOfFrameのあとで実行しなければいけないのでコルーチンで実行 https://qiita.com/su10/items/a8f3f825155835de3d2a
     IEnumerator CaptureScreenshot()
     {
+        var ssBeginPos = (Screen.width - SS_SIZE) / 2;    //スクリーンショットの左端
+        
         for (int i = 0; i < 10; i++) {
             _setScene.Set(i);
-            var texture = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
+            var texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.ARGB32, false);
             yield return new WaitForEndOfFrame();
 
-            texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            texture.ReadPixels(new Rect(ssBeginPos, 0, SS_SIZE, SS_SIZE), 0, 0);
             texture.Apply();
             var bytes = texture.EncodeToPNG();
             File.WriteAllBytes(WITHOUT_TARGET_PATH + i + EXTENSION, bytes);
@@ -46,8 +47,8 @@ public class DispDepth : MonoBehaviour
             _setScene.SetTarget();
             yield return new WaitForEndOfFrame();
 
-            texture = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
-            texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.ARGB32, false);
+            texture.ReadPixels(new Rect(ssBeginPos, 0, SS_SIZE, SS_SIZE), 0, 0);
             texture.Apply();
             bytes = texture.EncodeToPNG();
             File.WriteAllBytes(WITH_TARGET_PATH + i + EXTENSION, bytes);

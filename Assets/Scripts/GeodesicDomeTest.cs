@@ -27,7 +27,7 @@ public class GeodesicDomeTest : MonoBehaviour
         _vertices = new List<Vector3>(ICOSAHEDRON_VERTICES);  //正二十面体の頂点群⊆ジオデシックドームの頂点群
         _radius = ICOSAHEDRON_VERTICES[0].magnitude;
         
-        Split(1);
+        Split(2);
         foreach (var vtx in _vertices) {    //頂点を表示
             Instantiate(_sphere, vtx, Quaternion.identity).transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
         }

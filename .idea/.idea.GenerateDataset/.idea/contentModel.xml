@@ -200,6 +200,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="CalcGeodesicDome.cs" t="Include" />
           <e p="DispDepth.cs" t="Include" />
           <e p="GeodesicDomeTest.cs" t="Include" />
           <e p="SetScene.cs" t="Include" />

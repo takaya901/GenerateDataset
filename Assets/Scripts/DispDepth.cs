@@ -20,13 +20,13 @@ public class DispDepth : MonoBehaviour
 //    static readonly string TEST_WITHOUT_TARGET_PATH  = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TestWithoutTarget/";  //テスト用ターゲットなし画像の保存先
 //    static readonly string TEST_WITH_TARGET_PATH     = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TestWithTarget/";     //テスト用ターゲットあり画像の保存先
     static readonly string DEPTH_IMG_PATH            = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/DepthImg/";           //デプス画像の保存先
-    const string EXTENSION = ".png";
+    const string EXTENSION = ".jpg";
     const int SS_SIZE = 400; //生成画像の縦横サイズ
 
     void Start()
     {
         GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;  //カメラがデプステクスチャを生成するモード
-        StartCoroutine(CaptureScreenshot(isTrain:false));
+        StartCoroutine(CaptureScreenshot(isTrain:true));
 //        StartCoroutine(CaptureDepth());
     }
 
@@ -41,12 +41,12 @@ public class DispDepth : MonoBehaviour
         
         for (int i = FIRST_INDEX; i < imgNum; i++) {
             _setScene.Set(i);
-            var texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.ARGB32, false);
+            var texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.RGB24, false);
             yield return new WaitForEndOfFrame();
 
             texture.ReadPixels(new Rect(ssBeginPos, 0, SS_SIZE, SS_SIZE), 0, 0);
             texture.Apply();
-            var bytes = texture.EncodeToPNG();
+            var bytes = texture.EncodeToJPG();
             File.WriteAllBytes(DATASET_PATH + dirPrefix + WITHOUT_TARGET + i + EXTENSION, bytes);
 
             //if (i == 9) {
@@ -57,10 +57,10 @@ public class DispDepth : MonoBehaviour
             _setScene.SetTarget();
             yield return new WaitForEndOfFrame();
 
-            texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.ARGB32, false);
+            texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.RGB24, false);
             texture.ReadPixels(new Rect(ssBeginPos, 0, SS_SIZE, SS_SIZE), 0, 0);
             texture.Apply();
-            bytes = texture.EncodeToPNG();
+            bytes = texture.EncodeToJPG();
             File.WriteAllBytes(DATASET_PATH + dirPrefix + WITH_TARGET + i + EXTENSION, bytes);
 
             //if (i == 9) {

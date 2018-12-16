@@ -41,7 +41,8 @@ public class SetScene : MonoBehaviour
         SetCameraPos(isTrain);
 //        SetLight();
         var probeIdx = SetProbe();
-        SetMarker();
+        SetTarget();
+//        SetMarker();
 
 //        Debug.Log($"{idx} CameraPos: {transform.position}");
     }
@@ -94,13 +95,20 @@ public class SetScene : MonoBehaviour
     public void SetTarget()
     {
         var y = _target.transform.position.y;
-        var pos = new Vector3(_markerPos.x, y, _markerPos.z);
+        var pos = GetRandPos(y);
+        var probePos = _probe.transform.position;
+
+        //Probeと異なる位置に生成
+        while (pos.x == probePos.x && pos.z == probePos.z) {
+            pos = GetRandPos(y);
+        }
+        
         _instantiatedTarget = SetPrefab(_target, pos);
         _instantiatedTarget.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
         
-        if (_instantiatedMarker != null) {
-            Destroy(_instantiatedMarker);
-        }
+//        if (_instantiatedMarker != null) {
+//            Destroy(_instantiatedMarker);
+//        }
     }
 
     GameObject SetPrefab(GameObject prefab, Vector3 pos)
@@ -122,5 +130,10 @@ public class SetScene : MonoBehaviour
             y = y,
             z = Random.Range(-1, 2) * 2
         };
+    }
+
+    public void CastTargetShadow()
+    {
+        _instantiatedTarget.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
     }
 }

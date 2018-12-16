@@ -12,7 +12,7 @@ public class DispDepth : MonoBehaviour
     const string WITHOUT_TARGET = "without/";
     const string WITH_TARGET = "with/";
     
-    static readonly int TRAIN_IMG_NUM = 1; //訓練画像生成枚数
+    static readonly int TRAIN_IMG_NUM = 1000; //訓練画像生成枚数
     static readonly int TEST_IMG_NUM = 100;  //テスト画像生成枚数
     static readonly int FIRST_INDEX = 0;     //既存のデータセットに追加する場合はこれを変更
     
@@ -23,7 +23,7 @@ public class DispDepth : MonoBehaviour
     void Start()
     {
         GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;  //カメラがデプステクスチャを生成するモード
-        StartCoroutine(CaptureScreenshot(isTrain:true));
+        StartCoroutine(CaptureScreenshot(isTrain:false));
 //        StartCoroutine(CaptureDepth());
     }
 
@@ -51,7 +51,7 @@ public class DispDepth : MonoBehaviour
             //    yield return StartCoroutine(CaptureDepth());
             //}
             //Destroy(texture);
-            _setScene.SetTarget();
+            _setScene.CastTargetShadow();
             yield return new WaitForEndOfFrame();
 
             texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.RGB24, false);

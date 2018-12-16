@@ -8,18 +8,15 @@ public class DispDepth : MonoBehaviour
     [SerializeField] Material _depthMat;      //デプス表示用マテリアル
     [SerializeField] SetScene _setScene;
     
-    const string DATASET_PATH = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/";
-    const string WITHOUT_TARGET = "WithoutTarget/";
-    const string WITH_TARGET = "WithTarget/";
-    static readonly int TRAIN_IMG_NUM = 3000; //画像生成枚数
-    static readonly int TEST_IMG_NUM = 2000;     //画像生成枚数
-    static readonly int FIRST_INDEX = 0;      //既存のデータセットに追加する場合はこれを変更
+    const string DATASET_PATH = "/Users/takaya/Documents/Research/Dataset/";
+    const string WITHOUT_TARGET = "without/";
+    const string WITH_TARGET = "with/";
     
-//    static readonly string TRAIN_WITHOUT_TARGET_PATH = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TrainWithoutTarget/"; //訓練用ターゲットなし画像の保存先
-//    static readonly string TRAIN_WITH_TARGET_PATH    = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TrainWithTarget/";    //訓練用ターゲットあり画像の保存先
-//    static readonly string TEST_WITHOUT_TARGET_PATH  = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TestWithoutTarget/";  //テスト用ターゲットなし画像の保存先
-//    static readonly string TEST_WITH_TARGET_PATH     = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/TestWithTarget/";     //テスト用ターゲットあり画像の保存先
-    static readonly string DEPTH_IMG_PATH            = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/DepthImg/";           //デプス画像の保存先
+    static readonly int TRAIN_IMG_NUM = 1; //訓練画像生成枚数
+    static readonly int TEST_IMG_NUM = 100;  //テスト画像生成枚数
+    static readonly int FIRST_INDEX = 0;     //既存のデータセットに追加する場合はこれを変更
+    
+    static readonly string DEPTH_IMG_PATH = "/Users/takaya/Documents/Unity/GenerateDataset/Dataset/DepthImg/";           //デプス画像の保存先
     const string EXTENSION = ".jpg";
     const int SS_SIZE = 400; //生成画像の縦横サイズ
 
@@ -35,12 +32,12 @@ public class DispDepth : MonoBehaviour
     IEnumerator CaptureScreenshot(bool isTrain)
     {
         var imgNum = isTrain ? TRAIN_IMG_NUM : TEST_IMG_NUM;
-        var dirPrefix = isTrain ? "Train" : "Test";
+        var dirPrefix = isTrain ? "train/" : "test/";
         
         var ssBeginPos = (Screen.width - SS_SIZE) / 2;    //スクリーンショットの左端
         
         for (int i = FIRST_INDEX; i < imgNum; i++) {
-            _setScene.Set(i);
+            _setScene.Set(i, isTrain);
             var texture = new Texture2D(SS_SIZE, SS_SIZE, TextureFormat.RGB24, false);
             yield return new WaitForEndOfFrame();
 

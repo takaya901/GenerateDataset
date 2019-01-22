@@ -27,7 +27,9 @@ public class GeodesicDomeTest : MonoBehaviour
         _vertices = new List<Vector3>(ICOSAHEDRON_VERTICES);  //正二十面体の頂点群⊆ジオデシックドームの頂点群
         _radius = ICOSAHEDRON_VERTICES[0].magnitude;
         
-        Split(2);
+        Split(4);
+        _vertices = _vertices.Distinct().Where(vtx => vtx.y > 1.0f).ToList();
+        Debug.Log(_vertices.Count);
         foreach (var vtx in _vertices) {    //頂点を表示
             Instantiate(_sphere, vtx, Quaternion.identity).transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
         }
@@ -44,7 +46,7 @@ public class GeodesicDomeTest : MonoBehaviour
                 //隣接する頂点を取得
                 var adjVertices = _vertices
                     .Where(v => v != vtx)
-                    .Where(otherVtx => Math.Abs((otherVtx - vtx).magnitude - _distAdjVtx) < 0.2f)
+                    .Where(otherVtx => Math.Abs((otherVtx - vtx).magnitude - _distAdjVtx) < 0.14f)
                     .ToList();
             
                 //隣接頂点との中点を求め，正二十面体の外接球の表面に移動させる
@@ -57,6 +59,7 @@ public class GeodesicDomeTest : MonoBehaviour
             }
             
             _vertices = new List<Vector3>(newVertices);    //頂点群を更新
+            _vertices = _vertices.Distinct().ToList();
             _distAdjVtx = CalcAdjDist();    //隣接頂点間の距離を更新
         }
     }
@@ -69,31 +72,31 @@ public class GeodesicDomeTest : MonoBehaviour
         var minDist = float.MaxValue;
         
         foreach (var vtx in vertices) {
-            if ((vtx - _vertices[0]).magnitude < minDist) {
-                minDist = (vtx - _vertices[0]).magnitude;
+            if ((vtx - _vertices[0]).sqrMagnitude < minDist) {
+                minDist = (vtx - _vertices[0]).sqrMagnitude;
             }
         }
 
-        return minDist;
+        return Mathf.Sqrt(minDist);
     }
 
     //辺を描画
-    void OnDrawGizmos()
-    {
-        if (!EditorApplication.isPlaying) return;    //頂点計算しないと描画できないため
-        Gizmos.color = Color.red;
-        
-        foreach (var vtx in _vertices) 
-        {
-            //隣接する頂点を取得
-            var adjacentVertices = _vertices
-                .Where(v => v != vtx)
-                .Where(otherVtx => Math.Abs((otherVtx - vtx).magnitude - _distAdjVtx) < 0.2f)
-                .ToList();
-            
-            foreach (var avtx in adjacentVertices) {    //隣接頂点間の辺を描画
-                Gizmos.DrawLine(vtx, avtx);
-            }
-        }
-    }
+//    void OnDrawGizmos()
+//    {
+//        if (!EditorApplication.isPlaying) return;    //頂点計算しないと描画できないため
+//        Gizmos.color = Color.red;
+//        
+//        foreach (var vtx in _vertices) 
+//        {
+//            //隣接する頂点を取得
+//            var adjacentVertices = _vertices
+//                .Where(v => v != vtx)
+//                .Where(otherVtx => Math.Abs((otherVtx - vtx).magnitude - _distAdjVtx) < 0.2f)
+//                .ToList();
+//            
+//            foreach (var avtx in adjacentVertices) {    //隣接頂点間の辺を描画
+//                Gizmos.DrawLine(vtx, avtx);
+//            }
+//        }
+//    }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -7,25 +8,22 @@ using static UnityEngine.Mathf;
 /// <summary>シーンの各パラメータを設定する</summary>
 public class SetScene : MonoBehaviour
 {
-    [SerializeField] Transform _targetTransform;
     [SerializeField] GameObject[] _probes;  //probeにするオブジェクトのリスト
     [SerializeField] GameObject _target;
-    [SerializeField] GameObject _marker;
+    [SerializeField] GameObject _sphere;    //for debug
 
-    GameObject _probe, _instantiatedTarget, _instantiatedMarker;
-    Vector3 _camTargetPos;  //カメラの向き
-    static readonly float CAM_RADIUS = 5f;    //中心からカメラまでの距離
-    static readonly float LIGHT_RADIUS = 25f;    //中心から光源までの距離
-    static readonly float MARKER_Y = 0.01f;
+    GameObject _probe, _instantiatedTarget;
     CalcGeodesicDome _cgd;
     List<Vector3> _geoDomeVertices;
-    Vector3 _markerPos;
+    Shader _standardShader;
+    List<Vector3> _camPosList = new List<Vector3>();
+    Dictionary<Vector3, int> _cnt = new Dictionary<Vector3, int>();
 
     void Awake()
     {
         _cgd = new CalcGeodesicDome();
         _geoDomeVertices = _cgd.GetVertices();
-        _camTargetPos = _targetTransform.position;
+        _standardShader = Shader.Find("Standard");
     }
 
     public void Set(int idx, bool isTrain)
@@ -39,24 +37,30 @@ public class SetScene : MonoBehaviour
         }
 
         SetCameraPos(isTrain);
-//        SetLight();
         var probeIdx = SetProbe();
         SetTarget();
-//        SetMarker();
 
-//        Debug.Log($"{idx} CameraPos: {transform.position}");
+        if (idx % 1000 == 0) {
+            Debug.Log($"{idx}");   
+        }
     }
     
     /// <summary>ジオデシックドームの頂点上にカメラを配置</summary>
     void SetCameraPos(bool isTrain)
     {
         var idx = Random.Range(0, _geoDomeVertices.Count);
-        transform.position = _geoDomeVertices[idx] * 4f;
+        var pos = transform;
+        pos.position = _geoDomeVertices[idx] * 4f;
+        
+//        if (!_camPosList.Contains(transform.position)) {
+//            _camPosList.Add(pos.position);
+//        }
 
         if (!isTrain) {
-            var x = Random.Range(1f, 2f);
-            var z = Random.Range(1f, 2f);
+            var x = Random.Range(-1f, 1f);
+            var z = Random.Range(-1f, 1f);
             transform.Translate(x, 0f, z);
+//            _camPosList.Add(transform1.position);
         }
         
         transform.LookAt(new Vector3(0f, 0f, 0f));
@@ -69,18 +73,6 @@ public class SetScene : MonoBehaviour
 //        _light.transform.position = _geoDomeVertices[idx] * 20f;
 //        _light.transform.LookAt(Vector3.down);
     }
-
-    void SetMarker()
-    {
-        _markerPos = GetRandPos(0.01f);
-        var probePos = _probe.transform.position;
-        
-        //Probeと異なる位置に生成
-        while (_markerPos.x == probePos.x && _markerPos.z == probePos.z) {
-            _markerPos = GetRandPos(0.01f);
-        }
-        _instantiatedMarker = Instantiate(_marker, _markerPos, Quaternion.identity);
-    }
     
     float SetProbe()
     {
@@ -92,7 +84,7 @@ public class SetScene : MonoBehaviour
         return idx;
     }
     
-    public void SetTarget()
+    void SetTarget()
     {
         var y = _target.transform.position.y;
         var pos = GetRandPos(y);
@@ -105,10 +97,6 @@ public class SetScene : MonoBehaviour
         
         _instantiatedTarget = SetPrefab(_target, pos);
         _instantiatedTarget.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
-        
-//        if (_instantiatedMarker != null) {
-//            Destroy(_instantiatedMarker);
-//        }
     }
 
     GameObject SetPrefab(GameObject prefab, Vector3 pos)
@@ -116,8 +104,8 @@ public class SetScene : MonoBehaviour
         var instantiatedObj = Instantiate(prefab, pos, Quaternion.identity);
 
         //Probeの下端が地面に接するように移動
-//        var posY = instantiatedObj.GetComponent<Collider>().bounds.size.y / 2f;
-//        instantiatedObj.transform.Translate(0f, posY, 0f);
+        var posY = instantiatedObj.GetComponent<Collider>().bounds.size.y / 2f;
+        instantiatedObj.transform.Translate(0f, posY, 0f);
 
         return instantiatedObj;
     }
@@ -126,14 +114,34 @@ public class SetScene : MonoBehaviour
     Vector3 GetRandPos(float y)
     {
         return new Vector3 {
-            x = Random.Range(-1, 2) * 2,
-            y = y,
-            z = Random.Range(-1, 2) * 2
+            x = Random.Range(-1, 2) * 1.8f,
+            y = 0f,
+            z = Random.Range(-1, 2) * 1.8f
         };
     }
 
     public void CastTargetShadow()
     {
         _instantiatedTarget.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
+        _instantiatedTarget.GetComponent<Renderer>().material.shader = _standardShader;
+    }
+
+    public void SetSpheres()
+    {
+        Debug.Log(_camPosList.Count);
+        foreach (var pos in _camPosList) {
+            Instantiate(_sphere, pos, Quaternion.identity).transform.localScale = new Vector3(0.1f,0.1f, 0.1f);
+        }
+//        foreach (var pos in _camPosList) {
+//            if (_cnt.ContainsKey(pos)) {
+//                continue;
+//            }
+//            var count = _camPosList.Where(p => Approximately(pos.x, p.x) && Approximately(pos.y, p.y) && Approximately(pos.z, p.z)).ToList().Count;
+//            _cnt.Add(pos, count);
+//        }
+//
+//        foreach (var map in _cnt) {
+//            Debug.Log($"{map.Key} : {map.Value}\n");
+//        }
     }
 }

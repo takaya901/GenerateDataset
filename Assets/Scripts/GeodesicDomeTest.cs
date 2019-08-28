@@ -91,7 +91,7 @@ public class GeodesicDomeTest : MonoBehaviour
 //            //隣接する頂点を取得
 //            var adjacentVertices = _vertices
 //                .Where(v => v != vtx)
-//                .Where(otherVtx => Math.Abs((otherVtx - vtx).magnitude - _distAdjVtx) < 0.2f)
+//                .Where(otherVtx => Math.Abs((otherVtx - vtx).magnitude - _distAdjVtx) < 0.05f)
 //                .ToList();
 //            
 //            foreach (var avtx in adjacentVertices) {    //隣接頂点間の辺を描画

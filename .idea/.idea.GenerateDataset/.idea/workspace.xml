@@ -2,52 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca219015-03ed-4b2d-8ea5-2e9322f1314c" name="Default Changelist" comment="add drawing edges of geodesic dome">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Plane Color.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Plane Color.mat.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GenerateDataset/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Black.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Black.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Bunny Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Bunny Material.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Default Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Default Material.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Render Texture.renderTexture" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Render Texture.renderTexture.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plane Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plane Material.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plane.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plane.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Bunny Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Bunny Material.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PostProcessing/Editor/PropertyDrawers/MinDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PostProcessing/Editor/PropertyDrawers/MinDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Capsule.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Capsule.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Capsule.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Capsule.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cube.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cube.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cube.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cylinder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cylinder.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cylinder.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cylinder.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Sphere.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Sphere.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Sphere.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Sphere.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Probe Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Probe Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cone.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cone.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GeoDomeTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GeoDomeTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CalcGeodesicDome.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CalcGeodesicDome.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/DispDepth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DispDepth.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GeodesicDomeTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GeodesicDomeTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SetScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SetScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unlit_depth.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unlit_depth.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/bunny.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/bunny.obj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/depth.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/depth.shader.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,109 +31,6 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="GenerateDataset" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/DispDepth.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-              <folding>
-                <marker date="1548168051308" expanded="false" signature="6:80" ph="..." />
-                <marker date="1548168051308" expanded="true" signature="120:2336" ph="{...}" />
-                <marker date="1548168051308" expanded="true" signature="679:885" ph="{...}" />
-                <marker date="1548168051308" expanded="true" signature="891:1015" ph="/* スクリーンショットを保存 ... */" />
-                <marker date="1548168051308" expanded="true" signature="1063:2334" ph="{...}" />
-                <marker date="1548168051308" expanded="true" signature="1327:2226" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/SetScene.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-241">
-              <caret line="89" column="32" lean-forward="true" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-              <folding>
-                <marker date="1548172927654" expanded="false" signature="6:183" ph="..." />
-                <marker date="1548172927654" expanded="true" signature="261:4337" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="700:849" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="893:1263" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="956:996" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="1038:1091" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="1210:1257" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="1352:1904" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="1507:1622" ph="/* if (!_camPosList.Contains(transform.position)) { ... */" />
-                <marker date="1548172927654" expanded="true" signature="1646:1838" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="1943:2130" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="2009:2124" ph="/* _light.transform.position = _geoDomeVertices[idx] * 20f; ... */" />
-                <marker date="1548172927654" expanded="true" signature="2156:2383" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="2409:2844" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="2630:2674" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="2902:3195" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="3258:3417" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="3292:3410" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="3453:3652" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="3682:4335" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="3768:3891" ph="{...}" />
-                <marker date="1548172927654" expanded="true" signature="3892:4329" ph="/* foreach (var pos in _camPosList) { ... */" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/CalcGeodesicDome.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
-              <folding>
-                <marker date="1547729068695" expanded="false" signature="6:111" ph="..." />
-                <marker date="1547729068695" expanded="true" signature="143:2362" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="545:830" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="860:1078" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="1129:1857" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="1155:1854" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="1258:1683" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="1523:1678" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="1633:1672" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="1895:2190" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="2043:2156" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="2097:2152" ph="{...}" />
-                <marker date="1547729068695" expanded="true" signature="2227:2360" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/GeodesicDomeTest.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="896">
-              <caret line="60" column="67" selection-start-line="60" selection-start-column="67" selection-end-line="61" selection-end-column="54" />
-              <folding>
-                <marker date="1547727801421" expanded="false" signature="6:104" ph="..." />
-                <marker date="1547727801421" expanded="true" signature="196:3435" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="568:874" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="893:1365" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="1221:1359" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="1421:2395" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="1456:2389" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="1583:2185" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="1941:2171" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="2081:2153" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="2439:2806" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="2614:2763" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="2677:2753" ph="{...}" />
-                <marker date="1547727801421" expanded="true" signature="2812:3433" ph="/* 辺を描画 ... */" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -175,19 +46,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DispDepth.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PostProcessing/Editor/PropertyDrawers/MinDrawer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SetScene.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GeodesicDomeTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CalcGeodesicDome.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GeodesicDomeTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PostProcessing/Editor/PropertyDrawers/MinDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DispDepth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SetScene.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/GeodesicDomeVertices.cs" />
         <option value="$PROJECT_DIR$/Assets/PostProcessing/Editor/PropertyDrawers/MinDrawer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GeodesicDomeTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CalcGeodesicDome.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GeodesicDomeTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DispDepth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SetScene.cs" />
       </list>
@@ -198,10 +69,7 @@
       <facet id="riderModule/invalid/Default Android Facet" />
     </ignored-facets>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
-  </component>
+  <component name="ProjectId" id="1Q2UteHj8VDqXlt454tmrFRMAJW" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -216,51 +84,11 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectView">
-    <navigator currentView="UnityExplorer" proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="FileSystemExplorer" />
-      <pane id="SolutionExplorer">
-        <option name="show-all-files" value="false" />
-      </pane>
-      <pane id="AssemblyExplorer" />
-      <pane id="UnityExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Project" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
-            </path>
-            <path>
-              <item name="Project" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
-              <item name="PostProcessing" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="Project" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
-              <item name="PostProcessing" type="1045f7f1:UnityExplorerNode" />
-              <item name="Editor" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="Project" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
-              <item name="PostProcessing" type="1045f7f1:UnityExplorerNode" />
-              <item name="Editor" type="1045f7f1:UnityExplorerNode" />
-              <item name="PropertyDrawers" type="1045f7f1:UnityExplorerNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <option name="show-hidden-items" value="false" />
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="/usr/local/bin/git" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -282,12 +110,14 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" value="5511" />
+      <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="66557">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" value="66557" />
+      <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
     <list>
@@ -328,7 +158,18 @@
       <workItem from="1547724646433" duration="4741000" />
       <workItem from="1547888613326" duration="127000" />
       <workItem from="1547888757667" duration="449000" />
-      <workItem from="1548157241692" duration="2139000" />
+      <workItem from="1548157241692" duration="2243000" />
+      <workItem from="1548780522641" duration="473000" />
+      <workItem from="1548832048227" duration="3035000" />
+      <workItem from="1548842416942" duration="231000" />
+      <workItem from="1548902429817" duration="397000" />
+      <workItem from="1549176515972" duration="1191000" />
+      <workItem from="1549182091169" duration="212000" />
+      <workItem from="1549212826120" duration="667000" />
+      <workItem from="1549265029365" duration="569000" />
+      <workItem from="1554410758078" duration="307000" />
+      <workItem from="1566968004362" duration="136000" />
+      <workItem from="1566968404593" duration="4764000" />
     </task>
     <task id="LOCAL-00001" summary="add drawing edges of geodesic dome">
       <created>1542913367882</created>
@@ -340,55 +181,21 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72109000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Favorites" order="0" side_tool="true" weight="0.3297568" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24964234" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.119456366" />
-      <window_info id="Captures" order="3" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39975247" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unity" order="10" />
-      <window_info anchor="bottom" id="Unit Tests" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" />
-      <window_info anchor="bottom" x="21" y="317" width="1398" height="266" id="Event Log" order="13" side_tool="true" weight="0.32920793" />
-      <window_info anchor="bottom" id="Android Profiler" order="14" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Logcat" order="15" />
-      <window_info anchor="right" id="Errors In Solution" order="0" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-    </layout>
-  </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
-  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
     <MESSAGE value="add drawing edges of geodesic dome" />
     <option name="LAST_COMMIT_MESSAGE" value="add drawing edges of geodesic dome" />
   </component>
@@ -414,116 +221,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/GeodesicDomeVertices.cs" />
-    <entry file="file://$PROJECT_DIR$/../../Test/Assets/UniRxTest.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/PostProcessing/Editor/PropertyDrawers/MinDrawer.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding>
-            <marker date="1546731864141" expanded="false" signature="6:114" ph="..." />
-            <marker date="1546731864141" expanded="true" signature="152:1089" ph="{...}" />
-            <marker date="1546731864141" expanded="true" signature="247:1087" ph="{...}" />
-            <marker date="1546731864141" expanded="true" signature="350:1081" ph="{...}" />
-            <marker date="1546731864141" expanded="true" signature="501:679" ph="{...}" />
-            <marker date="1546731864141" expanded="true" signature="755:936" ph="{...}" />
-            <marker date="1546731864141" expanded="true" signature="953:1071" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/GeodesicDomeTest.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="60" column="67" selection-start-line="60" selection-start-column="67" selection-end-line="61" selection-end-column="54" />
-          <folding>
-            <marker date="1547727801421" expanded="false" signature="6:104" ph="..." />
-            <marker date="1547727801421" expanded="true" signature="196:3435" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="568:874" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="893:1365" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="1221:1359" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="1421:2395" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="1456:2389" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="1583:2185" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="1941:2171" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="2081:2153" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="2439:2806" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="2614:2763" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="2677:2753" ph="{...}" />
-            <marker date="1547727801421" expanded="true" signature="2812:3433" ph="/* 辺を描画 ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/CalcGeodesicDome.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
-          <folding>
-            <marker date="1547729068695" expanded="false" signature="6:111" ph="..." />
-            <marker date="1547729068695" expanded="true" signature="143:2362" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="545:830" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="860:1078" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="1129:1857" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="1155:1854" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="1258:1683" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="1523:1678" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="1633:1672" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="1895:2190" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="2043:2156" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="2097:2152" ph="{...}" />
-            <marker date="1547729068695" expanded="true" signature="2227:2360" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DispDepth.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding>
-            <marker date="1548168051308" expanded="false" signature="6:80" ph="..." />
-            <marker date="1548168051308" expanded="true" signature="120:2336" ph="{...}" />
-            <marker date="1548168051308" expanded="true" signature="679:885" ph="{...}" />
-            <marker date="1548168051308" expanded="true" signature="891:1015" ph="/* スクリーンショットを保存 ... */" />
-            <marker date="1548168051308" expanded="true" signature="1063:2334" ph="{...}" />
-            <marker date="1548168051308" expanded="true" signature="1327:2226" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/SetScene.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-241">
-          <caret line="89" column="32" lean-forward="true" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-          <folding>
-            <marker date="1548172927654" expanded="false" signature="6:183" ph="..." />
-            <marker date="1548172927654" expanded="true" signature="261:4337" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="700:849" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="893:1263" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="956:996" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="1038:1091" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="1210:1257" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="1352:1904" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="1507:1622" ph="/* if (!_camPosList.Contains(transform.position)) { ... */" />
-            <marker date="1548172927654" expanded="true" signature="1646:1838" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="1943:2130" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="2009:2124" ph="/* _light.transform.position = _geoDomeVertices[idx] * 20f; ... */" />
-            <marker date="1548172927654" expanded="true" signature="2156:2383" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="2409:2844" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="2630:2674" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="2902:3195" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="3258:3417" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="3292:3410" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="3453:3652" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="3682:4335" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="3768:3891" ph="{...}" />
-            <marker date="1548172927654" expanded="true" signature="3892:4329" ph="/* foreach (var pos in _camPosList) { ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

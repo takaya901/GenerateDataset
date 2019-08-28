@@ -11,6 +11,8 @@ public class SetScene : MonoBehaviour
     [SerializeField] GameObject[] _probes;  //probeにするオブジェクトのリスト
     [SerializeField] GameObject _target;
     [SerializeField] GameObject _sphere;    //for debug
+    [SerializeField] GameObject _plane;
+    [SerializeField] Material _material;
 
     GameObject _probe, _instantiatedTarget;
     CalcGeodesicDome _cgd;
@@ -39,6 +41,7 @@ public class SetScene : MonoBehaviour
         SetCameraPos(isTrain);
         var probeIdx = SetProbe();
         SetTarget();
+        SetPlane();
 
         if (idx % 1000 == 0) {
             Debug.Log($"{idx}");   
@@ -49,7 +52,7 @@ public class SetScene : MonoBehaviour
     void SetCameraPos(bool isTrain)
     {
         var idx = Random.Range(0, _geoDomeVertices.Count);
-        var pos = transform;
+        var pos = Camera.main.transform;
         pos.position = _geoDomeVertices[idx] * 4f;
         
 //        if (!_camPosList.Contains(transform.position)) {
@@ -59,11 +62,11 @@ public class SetScene : MonoBehaviour
         if (!isTrain) {
             var x = Random.Range(-1f, 1f);
             var z = Random.Range(-1f, 1f);
-            transform.Translate(x, 0f, z);
+            Camera.main.transform.Translate(x, 0f, z);
 //            _camPosList.Add(transform1.position);
         }
         
-        transform.LookAt(new Vector3(0f, 0f, 0f));
+        Camera.main.transform.LookAt(new Vector3(0f, 0f, 0f));
     }
 
     //光源の位置と強さを設定
@@ -79,7 +82,8 @@ public class SetScene : MonoBehaviour
         var idx = Random.Range(0, _probes.Length);  //probe識別子
         var y = _probes[idx].transform.position.y;
         var pos = GetRandPos(y);
-        _probe = SetPrefab(_probes[idx], pos);
+        _probe = SetPrefab(_probes[idx], pos, false);
+//        _probe.transform.Rotate(new Vector3(1f, 0f, 0f), 90f);
 
         return idx;
     }
@@ -87,25 +91,28 @@ public class SetScene : MonoBehaviour
     void SetTarget()
     {
         var y = _target.transform.position.y;
-        var pos = GetRandPos(y);
+        var pos = GetRandPos(0f);
         var probePos = _probe.transform.position;
 
         //Probeと異なる位置に生成
         while (pos.x == probePos.x && pos.z == probePos.z) {
-            pos = GetRandPos(y);
+            pos = GetRandPos(0f);
         }
         
-        _instantiatedTarget = SetPrefab(_target, pos);
-        _instantiatedTarget.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
+        _instantiatedTarget = SetPrefab(_target, pos, true);
+//        _instantiatedTarget.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
+//        _instantiatedTarget.transform.Rotate(new Vector3(1f, 0f, 0f), 90f);
     }
 
-    GameObject SetPrefab(GameObject prefab, Vector3 pos)
+    GameObject SetPrefab(GameObject prefab, Vector3 pos, bool isTarget)
     {
         var instantiatedObj = Instantiate(prefab, pos, Quaternion.identity);
 
         //Probeの下端が地面に接するように移動
-        var posY = instantiatedObj.GetComponent<Collider>().bounds.size.y / 2f;
-        instantiatedObj.transform.Translate(0f, posY, 0f);
+        if (isTarget) {
+            var posY = instantiatedObj.GetComponent<Collider>().bounds.size.y / 2f;
+            instantiatedObj.transform.Translate(0f, posY, 0f);
+        }
 
         return instantiatedObj;
     }
@@ -115,14 +122,26 @@ public class SetScene : MonoBehaviour
     {
         return new Vector3 {
             x = Random.Range(-1, 2) * 1.8f,
-            y = 0f,
+            y = y,
             z = Random.Range(-1, 2) * 1.8f
         };
     }
 
+    void SetPlane()
+    {
+        var interval = 30f;
+        var h = interval * Random.Range(0, 360 / (int)interval + 1);
+        h /= 360f;
+        var hsv = new Color(h, 0.5f, 0.5f);
+        var rgb = Color.HSVToRGB(hsv.r, hsv.g, hsv.b);
+        _plane.GetComponent<Renderer>().material.color = rgb;
+
+        Debug.Log($"{h}, {rgb}");
+    }
+
     public void CastTargetShadow()
     {
-        _instantiatedTarget.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
+//        _instantiatedTarget.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
         _instantiatedTarget.GetComponent<Renderer>().material.shader = _standardShader;
     }
 

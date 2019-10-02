@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137650568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04656829, y: 1.4070264, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -172,7 +172,8 @@ MonoBehaviour:
   _target: {fileID: 421165487106415376, guid: 704fcf46dfcbc423e9cace0528959a79, type: 3}
   _sphere: {fileID: 3650431256743620259, guid: 115b92fbedb0e496bbe65969923805b5, type: 3}
   _plane: {fileID: 1767749592}
-  _material: {fileID: 2100000, guid: cd0a0352ad83a4ba0ad6f07855566ef1, type: 2}
+  _camera: {fileID: 534669904}
+  _light: {fileID: 1532155397}
 --- !u!114 &137650571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ead4f3332e6ba4cab29690a7291586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isTrain: 1
+  _isTrain: 0
   _setScene: {fileID: 137650570}
 --- !u!1 &534669902
 GameObject:
@@ -320,7 +321,8 @@ MonoBehaviour:
   _target: {fileID: 421165487106415376, guid: 704fcf46dfcbc423e9cace0528959a79, type: 3}
   _sphere: {fileID: 3650431256743620259, guid: 115b92fbedb0e496bbe65969923805b5, type: 3}
   _plane: {fileID: 0}
-  _material: {fileID: 0}
+  _camera: {fileID: 0}
+  _light: {fileID: 0}
 --- !u!1 &1532155396
 GameObject:
   m_ObjectHideFlags: 0

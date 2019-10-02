@@ -12,9 +12,9 @@ public class DispDepth : MonoBehaviour
     const string WITHOUT_TARGET = "without/";
     const string WITH_TARGET = "with/";
 
-//    static readonly int TRAIN_IMG_NUM = 60000; //訓練画像生成枚数
-    static readonly int TRAIN_IMG_NUM = 10; //訓練画像生成枚数
-    static readonly int TEST_IMG_NUM = 1000;   //テスト画像生成枚数
+    static readonly int TRAIN_IMG_NUM = 100000; //訓練画像生成枚数
+//    static readonly int TRAIN_IMG_NUM = 100; //訓練画像生成枚数
+    static readonly int TEST_IMG_NUM = 100;   //テスト画像生成枚数
     static readonly int FIRST_INDEX = 0;      //既存のデータセットに追加する場合はこれを変更
     
     const string EXTENSION = ".jpg";
@@ -23,6 +23,7 @@ public class DispDepth : MonoBehaviour
     void Start()
     {
         Camera.main.depthTextureMode |= DepthTextureMode.Depth;  //カメラがデプステクスチャを生成するモード
+        CreateDirectry();
         StartCoroutine(CaptureScreenshot());
     }
 
@@ -59,5 +60,20 @@ public class DispDepth : MonoBehaviour
         }
 //        _setScene.SetSpheres();
         EditorApplication.isPlaying = false;    //データ取り終えたらエディタ再生終了
+    }
+
+    void CreateDirectry()
+    {
+        if (Directory.Exists(DATASET_PATH + "train")) {
+            Directory.CreateDirectory(DATASET_PATH + "train");
+            Directory.CreateDirectory(DATASET_PATH + "train/with");
+            Directory.CreateDirectory(DATASET_PATH + "train/without");
+        }
+        
+        if (Directory.Exists(DATASET_PATH + "test")) {
+            Directory.CreateDirectory(DATASET_PATH + "test");
+            Directory.CreateDirectory(DATASET_PATH + "test/with");
+            Directory.CreateDirectory(DATASET_PATH + "test/without");
+        }
     }
 }

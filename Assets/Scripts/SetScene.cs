@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using UnityEngine;
@@ -12,7 +13,9 @@ public class SetScene : MonoBehaviour
     [SerializeField] GameObject _target;
     [SerializeField] GameObject _sphere;    //for debug
     [SerializeField] GameObject _plane;
-    [SerializeField] Material _material;
+
+    [SerializeField] Camera _camera;
+    [SerializeField] Light _light;
 
     GameObject _probe, _instantiatedTarget;
     CalcGeodesicDome _cgd;
@@ -39,9 +42,10 @@ public class SetScene : MonoBehaviour
         }
 
         SetCameraPos(isTrain);
+        SetLight();
         var probeIdx = SetProbe();
         SetTarget();
-        SetPlane();
+        SetPlane(isTrain);
 
         if (idx % 1000 == 0) {
             Debug.Log($"{idx}");   
@@ -52,29 +56,35 @@ public class SetScene : MonoBehaviour
     void SetCameraPos(bool isTrain)
     {
         var idx = Random.Range(0, _geoDomeVertices.Count);
-        var pos = Camera.main.transform;
-        pos.position = _geoDomeVertices[idx] * 4f;
+        var pos = _camera.transform;
+//        pos.position = _geoDomeVertices[idx] * 4f;
+//        var list = new List<float>()
+//        {
+//            3f, 3.25f, 3.5f, 3.75f, 4f, 4.25f, 4.5f, 4.75f, 5f
+//        };
+//        var dist = list[Random.Range(0, list.Count)];
+//        pos.position = _geoDomeVertices[idx] * dist;
+//        Debug.Log(dist);
         
 //        if (!_camPosList.Contains(transform.position)) {
 //            _camPosList.Add(pos.position);
 //        }
 
-        if (!isTrain) {
+//        if (!isTrain) {
+            pos.position = _geoDomeVertices[idx] * Random.Range(3.5f, 5f);
             var x = Random.Range(-1f, 1f);
             var z = Random.Range(-1f, 1f);
-            Camera.main.transform.Translate(x, 0f, z);
+            _camera.transform.Translate(x, 0f, z);
 //            _camPosList.Add(transform1.position);
-        }
+//        }
         
-        Camera.main.transform.LookAt(new Vector3(0f, 0f, 0f));
+        _camera.transform.LookAt(new Vector3(0f, 0f, 0f));
     }
 
     //光源の位置と強さを設定
     void SetLight()
     {
-        var idx = Random.Range(0, _geoDomeVertices.Count);
-//        _light.transform.position = _geoDomeVertices[idx] * 20f;
-//        _light.transform.LookAt(Vector3.down);
+        _light.intensity = Random.Range(0f, 1f);
     }
     
     float SetProbe()
@@ -113,6 +123,8 @@ public class SetScene : MonoBehaviour
             var posY = instantiatedObj.GetComponent<Collider>().bounds.size.y / 2f;
             instantiatedObj.transform.Translate(0f, posY, 0f);
         }
+        
+        instantiatedObj.transform.localRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
 
         return instantiatedObj;
     }
@@ -127,16 +139,25 @@ public class SetScene : MonoBehaviour
         };
     }
 
-    void SetPlane()
+    void SetPlane(bool isTrain)
     {
-        var interval = 30f;
-        var h = interval * Random.Range(0, 360 / (int)interval + 1);
-        h /= 360f;
-        var hsv = new Color(h, 0.5f, 0.5f);
+        var interval = 10f;
+//        var h = interval * Random.Range(0, 360 / (int)interval + 1);
+//        h /= 360f;
+//        var s = Random.Range(0f, 1f);
+//        var v = Random.Range(0f, 1f);
+
+//        var hsv = new Color(h, 0.5f, 0.5f);
+        
+//        if (!isTrain) {
+            var hsv = new Color();
+            hsv.r = Random.Range(0f, 1f);
+            hsv.g = Random.Range(0f, 1f);
+            hsv.b = Random.Range(0f, 1f);
+//        }
+        
         var rgb = Color.HSVToRGB(hsv.r, hsv.g, hsv.b);
         _plane.GetComponent<Renderer>().material.color = rgb;
-
-        Debug.Log($"{h}, {rgb}");
     }
 
     public void CastTargetShadow()
